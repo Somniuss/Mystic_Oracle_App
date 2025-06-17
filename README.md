@@ -1,2 +1,13 @@
 # Mystic_Oracle_App
-A web application for generating predictions. Built with Java, Spring Boot, Thymeleaf, and secured with Spring Security. Includes JUnit-based unit tests.
+
+A simple Spring Boot web app for generating predictions.  
+
+## 🚀 Tech Stack
+
+- Java 17, Spring Boot, Thymeleaf, Spring Security  
+- JUnit 5 for testing
+
+## ▶️ Run
+
+```bash
+mvn spring-boot:run
