@@ -12,6 +12,7 @@ public class PredictionServiceImpl implements PredictionService {
 
     private final PredictionRepository predictionRepository;
     private final Random random = new Random();
+    // Hello from GIT!
 
     public PredictionServiceImpl(PredictionRepository predictionRepository) {
         this.predictionRepository = predictionRepository;
