@@ -23,6 +23,9 @@ public class Prediction implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String text;
 
+	@Column(name = "image_name")
+	private String imageName;
+
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +40,14 @@ public class Prediction implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	@Override
@@ -57,6 +68,6 @@ public class Prediction implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Prediction{" + "id=" + id + ", text='" + text + '\'' + '}';
+		return "Prediction{" + "id=" + id + ", text='" + text + '\'' + ", imageName='" + imageName + '\'' + '}';
 	}
 }

@@ -12,29 +12,38 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http.authorizeHttpRequests(auth -> auth
-	                    .requestMatchers("/users/register", "/register", "/actuator/**", "/css/**").permitAll()
-	                    .anyRequest().authenticated())
-	            .formLogin(form -> form
-	                    .loginPage("/login")
-	                    .defaultSuccessUrl("/main", true)
-	                    .permitAll())
-	            .logout(logout -> logout
-	                    .logoutUrl("/logout")
-	                    .logoutSuccessUrl("/login?logout")
-	                    .invalidateHttpSession(true)
-	                    .deleteCookies("JSESSIONID")
-	                    .permitAll()
-	            );
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(auth -> auth
+            
+                .requestMatchers(
+                    "/register",        
+                    "/login",           
+                    "/css/**", "/js/**", "/images/**", 
+                    "/actuator/**"      
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/main", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .permitAll()
+            );
 
-	    return http.build();
-	}
-
+        return http.build();
+    }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 

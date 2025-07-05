@@ -19,7 +19,15 @@
 		<div th:if="${prediction != null}">
 			<p style="font-size: 20px; text-align: center; color: #111;"
 				th:text="${prediction.text}"></p>
+
+
+			<div style="text-align: center; margin-top: 20px;"
+				th:if="${prediction.imageName != null}">
+				<img th:src="@{/images/{image}(image=${prediction.imageName})}"
+					alt="Prediction Image" style="max-width: 300px; max-height: 300px;" />
+			</div>
 		</div>
+
 
 
 		<form action="/main" method="get">
